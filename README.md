@@ -114,5 +114,53 @@ To interface with the SDR, FPGA images need to be installed. Now the drivers are
 sudo uhd_images_downloader
 ```
 
-# Install `GNU-radio`:
+## Install `GNU-radio`:
+
+After the `uhd` drivers have been installed, then you can install and build `GNU-radio` from source. This is as it has dependencies that rely on the `uhd` drivers. This is a very similar process as building the other package.
+
+Change back to `/workarea`:
+
+```shell
+cd $HOME
+cd workarea
+```
+
+Clone the `GNU-radio` repository:
+
+```shell
+git clone --recursive https://github.com/gnuradio/gnuradio
+```
+
+And switch to `/gnuradio`:
+
+```shell
+cd gnuradio
+```
+
+Checkout the branch:
+
+```shell
+git checkout v3.7.13.4
+```
+
+Update the submodules:
+
+```shell
+git submodule update --init --recursive
+```
+
+Make and build `GNU-radio`:
+
+```shell
+mkdir build
+cd build
+cmake ../
+make -j 4
+```
+
+You can test to see if it built correctly, however this might take a long time to complete (skipable):
+
+```shell
+make test
+```
 
