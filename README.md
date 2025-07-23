@@ -1,2 +1,4 @@
 # EttusSDR_X310_PCI
-How to interface Ettus X310 SDR over PCI to a computer
+This is a guide on how to interface the Ettus X310 SDR over PCI to a computer to allow for higher transfer speeds than conventional Ethernet communication.
+
+
