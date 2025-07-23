@@ -35,7 +35,7 @@ mkdir workarea
 cd workarea
 ```
 
-## `uhd` Drivers:
+## Install `uhd` Drivers:
 
 Clone the `uhd` drivers to this folder to build later:
 
@@ -81,3 +81,38 @@ Install `uhd` by running as sudo:
 ```shell
 sudo make install -j 4
 ```
+
+Update your system cache:
+
+```shell
+sudo ldconfig
+```
+
+You will also need to define the `LD_LIBRARY_PATH` environment variable. This can be done through running on terminal the below or adding it to your `$HOME/.bashrc` to run at startup.
+
+```shell
+export LD_LIBRARY_PATH=/usr/local/lib
+```
+
+Test that your system has installed `uhd` correctly by running:
+
+```shell
+uhd_find_devices
+```
+
+This will return something similar to:
+```
+linux; GNU C++ version 7.5.0; Boost_106501; UHD_003.009.005-0-g32951af2
+No UHD Devices Found
+```
+
+## Download `uhd` FPGA images:
+
+To interface with the SDR, FPGA images need to be installed. Now the drivers are installed this can be called through the command:
+
+```shell
+sudo uhd_images_downloader
+```
+
+# Install `GNU-radio`:
+
