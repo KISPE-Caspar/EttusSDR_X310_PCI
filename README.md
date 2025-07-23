@@ -164,3 +164,67 @@ You can test to see if it built correctly, however this might take a long time t
 make test
 ```
 
+Then install `GNU-radio`:
+
+```shell
+sudo make install -j 4
+```
+
+Update system shared cache:
+
+```shell
+sudo ldconfig
+```
+
+You can check `GNU-radio` is installed correctly through running some basic commands which should return their respective information:
+
+```shell
+gnuradio-config-info --version
+gnuradio-config-info --prefix
+gnuradio-config-info --enabled-components
+```
+
+## Installing Linux NI PCI drivers:
+
+**Download the `2020` version of the driver package at the link below:**
+
+[NI Linux Device Drivers](https://www.ni.com/en-us/support/downloads/drivers/download.ni-linux-device-drivers.html)
+
+Extract the downloaded zip file and install the `.deb` file inside:
+
+```shell
+sudo dpkg -i {ni drivers repository}.deb
+```
+
+Update `apt`:
+
+```shell
+sudo apt update
+```
+
+Install the kernal headers, these may be already preinstalled:
+
+```shell
+sudo apt install linux-headers-$(uname -r)
+```
+
+Now install the RIO PCI driver:
+
+```shell
+sudo apt install ni-usrp-rio
+```
+
+Build the kernal modules:
+
+```shell
+dkms autoinstall
+```
+
+The drivers will now be installed and you should be able to discover your SDR...
+
+Check by running the following command below:
+
+```shell
+uhd_find_devices
+```
+
