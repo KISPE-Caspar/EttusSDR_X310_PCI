@@ -3,6 +3,13 @@ This is a guide on how to interface the Ettus X310 SDR over PCI to a computer to
 
 ![20250723_141332](https://github.com/user-attachments/assets/8d5df17c-d2ce-450b-85a0-76698ad5d22e)
 
+This is NOT a guide on proper useage of connecting the SDR to the computer using the cable.
+
+### References:
+
+- https://kb.ettus.com/Building_and_Installing_the_USRP_Open-Source_Toolchain_(UHD_and_GNU_Radio)_on_Linux
+- https://files.ettus.com/manual/page_ni_rio_kernel.html
+
 ## Requirements:
 
 - **Ubuntu 18.04 Bionic Beaver**
