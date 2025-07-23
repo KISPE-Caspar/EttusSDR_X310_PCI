@@ -235,3 +235,18 @@ Check by running the following command below:
 uhd_find_devices
 ```
 
+# Useage with SDR software:
+
+When using the SDR with software, you may get a warning that your version number of the FPGA is not the number expected.
+
+To fix this, you can flash the X310 with new firmware, reccomended through the ethernet cable.
+
+Plug an ethernet cable between the computer and SDR and power it on.
+
+You will need to change your internet settings to have a local address of `192.168.10.1` and subnet mask of `255.255.255.0`.
+
+Then after checking `uhd_find_devices`, run the following to flash `uhd` firmware compatible with your installed version:
+
+```shell
+/usr/bin/uhd_image_loader --args="type=x300,addr=192.168.10.2"
+```
