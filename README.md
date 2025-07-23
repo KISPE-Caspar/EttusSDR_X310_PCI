@@ -10,8 +10,6 @@ This is a guide on how to interface the Ettus X310 SDR over PCI to a computer to
 
 It was found that to successfully install the NI RIO PCI drivers, Ubuntu versions other than 18.04 were found be troublesome and had many dependancy issues.
 
-Required software packages can either be taken from git or are uploaded and kept in this repository.
-
 Run the following to ensure you have all the relevant software package dependancies before continuing:
 
 ```shell
@@ -22,4 +20,64 @@ Then reboot the system
 
 ```shell
 sudo reboot
+```
+
+---
+# Installation Steps
+
+To communicate to the X310, the `uhd` drivers and `gnu-radio` must first be installed. These must be compiled from source with the correct version in order to work.
+
+Make the `workarea` folder where the packages can be built:
+
+```shell
+cd $HOME
+mkdir workarea
+cd workarea
+```
+
+## `uhd` Drivers:
+
+Clone the `uhd` drivers to this folder to build later:
+
+```shell
+git clone https://github.com/EttusResearch/uhd
+cd uhd
+```
+
+You must set the version to make later:
+
+```shell
+git checkout release_003_009_005
+```
+
+Change directory into `/host` and create your build folder:
+
+```shell
+cd host
+mkdir build
+cd build
+```
+
+Inside the `/build` folder, run:
+
+```shell
+cmake ..
+```
+
+Then run `make`, this can be sped up using more cores by `-j #` where # is the number of cores you want to use:
+
+```shell
+make -j 4
+```
+
+You can test if your build was successful by running:
+
+```shell
+make test
+```
+
+Install `uhd` by running as sudo:
+
+```shell
+sudo make install -j 4
 ```
